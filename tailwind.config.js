@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        berkshire_font: `'Berkshire Swash', serif`, // Adds a new `font-display` class
+      }
+    },
   },
   plugins: [require("daisyui")],
 }
