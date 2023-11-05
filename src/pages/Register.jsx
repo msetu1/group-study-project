@@ -69,8 +69,8 @@ const Register = () => {
     }
     return (
         <div className='register-bg-img min-h-screen'>
-            <div className='pt-16'>
-                <div className="max-w-[34%] mx-auto">
+            <div className='pt-16 mx-5 lg:mx-0 pb-16 lg:pb-0'>
+                <div className="lg:max-w-[34%] mx-auto">
                     <div className="rounded-xl">
                         <div className="card w-full px-10 shadow-2xl bg-[#e0f2fe]">
                             <div>
@@ -94,7 +94,7 @@ const Register = () => {
                                     <input
                                         type="text"
                                         name="photo"
-                                        placeholder="url"
+                                        placeholder="photo url"
                                         className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">

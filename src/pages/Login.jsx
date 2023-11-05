@@ -40,12 +40,12 @@ const Login = () => {
 
   }
   return (
-    <div className='min-h-screen bg-img  bg-black'>
-      <div className='flex items-center pt-28 justify-between max-w-6xl mx-auto'>
-        <div>
+    <div className='min-h-screen bg-img bg-black'>
+      <div className='flex  items-center  pt-28 justify-between max-w-6xl mx-auto'>
+        <div className='lg:block hidden'>
           <img className='' src={imglogo} alt="" />
         </div>
-        <div className="">
+        <div className="ml-5 mr-20 lg:ml-0 my-20 lg:my-0">
           <div className="rounded-xl ">
             <div className="card w-full px-10 shadow-2xl bg-[#e0f2fe]">
               <div>
