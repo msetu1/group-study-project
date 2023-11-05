@@ -2,7 +2,37 @@ import { NavLink } from 'react-router-dom';
 import './login.css'
 import SocialLogin from './SocialLogin';
 import imglogo from '../../public/login.svg'
+import Swal from 'sweetalert2';
+import { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
+import toast from 'react-hot-toast';
 const Login = () => {
+  const {userLogin}=useContext(AuthContext)
+  const handleLogin = e => {
+      e.preventDefault()
+      const form = new FormData(e.currentTarget);
+      const email = form.get('email')
+      const password = form.get('password')
+      console.log(email, password);
+     
+      // create user 
+      userLogin(email,password)
+      .then(result => {
+          console.log(result.user);
+          // navigate(location?.state ? location.state : '/')
+          Swal.fire({
+              title: 'Success',
+              text: 'User Login successfully',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            })
+      })
+      .catch(error => {
+        console.error(error)
+        toast.error('Invalid email and password', error.message);
+      })
+
+  }
   return (
     <div className='min-h-screen bg-img  bg-black'>
       <div className='flex items-center pt-28 justify-between max-w-6xl mx-auto'>
@@ -15,7 +45,7 @@ const Login = () => {
               <div>
                 <h1 className=" text-4xl mt-8 text-center font-bold">Please Login Now</h1>
               </div>
-              <form className="card-body">
+              <form onSubmit={handleLogin} className="card-body">
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>

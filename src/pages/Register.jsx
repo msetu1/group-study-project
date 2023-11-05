@@ -1,6 +1,59 @@
 import { NavLink } from 'react-router-dom';
 import './register.css';
+import { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
+import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
+
+
 const Register = () => {
+    const {createUser}=useContext(AuthContext)
+    const handleRegister = e => {
+        e.preventDefault()
+        const form = new FormData(e.currentTarget);
+        const name = form.get('name')
+        const photo = form.get('photo')
+        const email = form.get('email')
+        const password = form.get('password')
+        console.log(name,photo,email, password);
+
+        // password validation 
+        if (password.length < 6) {
+            toast.error('Please password must be at least 6 caracters')
+            return
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast.error('Your password have at least one uper case charecters');
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            toast.error('Your password have at least one lower case charecters')
+            return
+        }
+
+        // create user 
+        createUser(email,password)
+        .then(result => {
+            console.log(result.user);
+            // navigate(location?.state ? location.state : '/')
+            Swal.fire({
+                title: 'Success',
+                text: 'User created successfully',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+              })
+        })
+        .catch(error => {
+            console.error(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Something went wrong!!',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              })
+        })
+
+    }
     return (
         <div className='register-bg-img min-h-screen'>
             <div className='pt-16'>
@@ -10,7 +63,7 @@ const Register = () => {
                             <div>
                                 <h1 className=" text-4xl mt-8 text-center font-bold">Please Register Now</h1>
                             </div>
-                            <form className="card-body">
+                            <form onSubmit={handleRegister} className="card-body">
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Name</span>
