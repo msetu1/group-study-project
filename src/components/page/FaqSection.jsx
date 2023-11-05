@@ -65,7 +65,7 @@ const FaqSection = () => {
                     {/* Question-6 */}
                     <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-200 mb-5">
                         <div className="collapse-title text-xl font-medium">
-                            <h1>6. How does technology affect the academic performance of students?</h1>
+                            <h1>6. How does technology affect the academic performance?</h1>
                         </div>
                         <div className="collapse-content">
                             <p><span className="text-xl text-[#ea580c] font-bold underline underline-offset-1">Answer :</span> Students are able to collaborate with peers using digital platforms, explore creativity through technological features, engage in higher-order thinking processes, participate in inquiry-based learning, synthesize information from multiple sources and establish a sense of online social presence.</p>
