@@ -1,13 +1,14 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import './login.css'
 import SocialLogin from './SocialLogin';
 import imglogo from '../../public/login.svg'
 import Swal from 'sweetalert2';
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import toast from 'react-hot-toast';
 const Login = () => {
   const {userLogin}=useContext(AuthContext)
+  const location = useLocation()
+    const navigate = useNavigate()
   const handleLogin = e => {
       e.preventDefault()
       const form = new FormData(e.currentTarget);
@@ -19,7 +20,7 @@ const Login = () => {
       userLogin(email,password)
       .then(result => {
           console.log(result.user);
-          // navigate(location?.state ? location.state : '/')
+          navigate(location?.state ? location.state : '/')
           Swal.fire({
               title: 'Success',
               text: 'User Login successfully',
@@ -29,7 +30,12 @@ const Login = () => {
       })
       .catch(error => {
         console.error(error)
-        toast.error('Invalid email and password', error.message);
+        Swal.fire({
+          title: 'Error!',
+          text: 'Invalid email and password',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
       })
 
   }

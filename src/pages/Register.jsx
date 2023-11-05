@@ -3,7 +3,6 @@ import './register.css';
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
-import toast from 'react-hot-toast';
 
 
 const Register = () => {
@@ -19,16 +18,30 @@ const Register = () => {
 
         // password validation 
         if (password.length < 6) {
-            toast.error('Please password must be at least 6 caracters')
-            return
+            return Swal.fire({
+                title: 'Error!',
+                text: 'Please password must be at least 6 caracters',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              })
         }
         else if (!/[A-Z]/.test(password)) {
-            toast.error('Your password have at least one uper case charecters');
-            return;
+            return Swal.fire({
+                title: 'Error!',
+                text: 'Your password have at least one uper case charecters',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              })
+            
         }
         else if (!/[a-z]/.test(password)) {
-            toast.error('Your password have at least one lower case charecters')
-            return
+           return Swal.fire({
+                title: 'Error!',
+                text: 'Your password have at least one lower case charecters',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              })
+            
         }
 
         // create user 

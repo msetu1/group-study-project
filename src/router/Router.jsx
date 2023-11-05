@@ -7,6 +7,7 @@ import Assignments from "../pages/Assignments";
 import MyAssignments from "../pages/MyAssignments";
 import SubmittedAssignments from "../pages/SubmittedAssignments";
 import CreateAssignments from "../pages/CreateAssignments";
+import PrivateProvider from "../providers/PrivateProvider";
 
 const router = createBrowserRouter([
     {
@@ -23,15 +24,21 @@ const router = createBrowserRouter([
         },
         {
             path: "myAssignment",
-            element: <MyAssignments></MyAssignments>, 
+            element: <PrivateProvider>
+                <MyAssignments></MyAssignments>
+            </PrivateProvider>, 
         },
         {
             path: "createAssignments",
-            element: <CreateAssignments></CreateAssignments>, 
+            element: <PrivateProvider>
+                <CreateAssignments></CreateAssignments>
+            </PrivateProvider>, 
         },
         {
             path: "submittedAssignments",
-            element: <SubmittedAssignments></SubmittedAssignments>, 
+            element: <PrivateProvider>
+                <SubmittedAssignments></SubmittedAssignments>
+            </PrivateProvider>, 
         },
       ]
     },

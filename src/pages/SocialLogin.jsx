@@ -1,20 +1,20 @@
 import { FcGoogle } from 'react-icons/fc';
 import { BsGithub } from 'react-icons/bs';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 
 
 const SocialLogin = () => {
     const { googleLogin,githubLogin } = useContext(AuthContext);
-    // const location = useLocation()
-    // const navigate = useNavigate()
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const socialLogin = (media) => {
         media()
             .then(result => {
                 console.log(result.user);
-                // navigate(location?.state ? location.state : '/')
+                navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 console.error(error);
