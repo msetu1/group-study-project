@@ -5,6 +5,10 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Assignments from "../pages/Assignments";
 import ReadMore from "../components/page/ReadMore";
+import MyAssignment from "../pages/MyAssignment";
+import CreateAssignments from "../pages/CreateAssignments";
+import Submited from "../pages/Submited";
+import PrivateProvider from "../providers/PrivateProvider";
 
 const router = createBrowserRouter([
     {
@@ -13,28 +17,37 @@ const router = createBrowserRouter([
       children:[
         {
             path: "/",
-            element: <Home></Home>, 
+            element: <Home></Home>,
+            loader:()=>fetch('http://localhost:5000/feature') 
         },
         {
             path: "assignments",
             element: <Assignments></Assignments>, 
         },
+        
         {
-            path: "readMore",
-            element: <ReadMore></ReadMore>, 
+            path: "myAssignment",
+            element: <PrivateProvider>
+              <MyAssignment></MyAssignment>
+            </PrivateProvider>, 
         },
-        // {
-        //     path: "myAssignment",
-        //     element:
-        // },
-        // {
-        //     path: "createAssignments",
-        //     element:  
-        // },
-        // {
-        //     path: "submitted",
-        //     element: 
-        // },
+        {
+            path: "createAssignments",
+            element: <PrivateProvider>
+              <CreateAssignments></CreateAssignments>
+            </PrivateProvider>, 
+        },
+        {
+            path: "submitted",
+            element: <PrivateProvider>
+              <Submited></Submited>
+            </PrivateProvider>, 
+        },
+        {
+          path: "readMore",
+          element: <ReadMore></ReadMore>, 
+      },
+        
       ]
     },
     {

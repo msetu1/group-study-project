@@ -2,9 +2,9 @@
 const FaqSection = () => {
     return (
         <div className="max-w-7xl mx-auto mb-20">
-            <h1 className="text-5xl text-center font-bold">Frequently Asket Questions</h1>
+            <h1 className="text-4xl lg:text-5xl text-center font-bold">Frequently Asket Questions</h1>
             {/* Questions */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 mt-10 gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 mt-10 gap-5 px-5 lg:px-0">
                 <div>
                     {/* Question-1 */}
                     <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-200 mb-5">

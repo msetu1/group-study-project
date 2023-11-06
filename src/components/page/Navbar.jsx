@@ -20,7 +20,7 @@ const Navbar = () => {
             Home
         </NavLink></li>
         <li><NavLink
-            to="assignments"
+            to="/assignments"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-xl font-bold underline underline-offset-2 text-[#ea580c]" : ""
             }
@@ -28,8 +28,8 @@ const Navbar = () => {
             Assignments
         </NavLink></li>
 
-        {/* <li><NavLink
-            to="myAssignment"
+        <li><NavLink
+            to="/myAssignment"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-xl font-bold underline underline-offset-2 text-[#ea580c]" : ""
             }
@@ -37,21 +37,21 @@ const Navbar = () => {
             My Assignments
         </NavLink></li>
         <li><NavLink
-            to="createAssignments"
+            to="/createAssignments"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-xl font-bold underline underline-offset-2 text-[#ea580c]" : ""
             }
         >
-            Create Assignments
+            Created
         </NavLink></li>
         <li><NavLink
-            to="submittedAssignments"
+            to="/submitted"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-xl font-bold underline underline-offset-2 text-[#ea580c]" : ""
             }
         >
-            Submitted 
-        </NavLink></li> */}
+            Submitted
+        </NavLink></li>
 
 
         <li><NavLink
@@ -92,7 +92,7 @@ const Navbar = () => {
                     {
                         user?.email?
                         <>
-                        <div className="mr-5">
+                        <div className="mr-5 lg:block hidden">
                             <img className="h-[50px] w-[50px] rounded-full" src={user?.photoUrl} alt="" />
                             <p className="text-white font-semibold text-base">{user?.displayName}</p>
                         </div>
