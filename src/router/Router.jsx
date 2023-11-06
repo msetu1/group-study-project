@@ -22,7 +22,8 @@ const router = createBrowserRouter([
         },
         {
             path: "assignments",
-            element: <Assignments></Assignments>, 
+            element: <Assignments></Assignments>,
+            loader:()=>fetch('http://localhost:5000/allasignment')
         },
         
         {
@@ -35,7 +36,8 @@ const router = createBrowserRouter([
             path: "createAssignments",
             element: <PrivateProvider>
               <CreateAssignments></CreateAssignments>
-            </PrivateProvider>, 
+            </PrivateProvider>,
+            loader:()=>fetch('http://localhost:5000/allasignment') 
         },
         {
             path: "submitted",

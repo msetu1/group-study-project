@@ -51,7 +51,7 @@ const Register = () => {
             // navigate(location?.state ? location.state : '/')
             Swal.fire({
                 title: 'Success',
-                text: 'User created successfully',
+                text: 'User Register successfully',
                 icon: 'success',
                 confirmButtonText: 'Ok'
               })
