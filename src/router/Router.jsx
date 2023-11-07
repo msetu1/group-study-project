@@ -9,6 +9,8 @@ import MyAssignment from "../pages/MyAssignment";
 import CreateAssignments from "../pages/CreateAssignments";
 import Submited from "../pages/Submited";
 import PrivateProvider from "../providers/PrivateProvider";
+import ViewAssignment from "../components/details/ViewAssignment";
+import Update from "../components/update/Update";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +35,13 @@ const router = createBrowserRouter([
             </PrivateProvider>, 
         },
         {
+            path: "view/:id",
+            element: <PrivateProvider>
+              <ViewAssignment></ViewAssignment>
+            </PrivateProvider>,
+            loader:({params})=>fetch(`http://localhost:5000/allasignment/${params.id}`) 
+        },
+        {
             path: "createAssignments",
             element: <PrivateProvider>
               <CreateAssignments></CreateAssignments>
@@ -44,6 +53,11 @@ const router = createBrowserRouter([
             element: <PrivateProvider>
               <Submited></Submited>
             </PrivateProvider>, 
+        },
+        {
+            path: "update/:id",
+            element: <Update></Update>, 
+            loader:({params})=>fetch(`http://localhost:5000/allasignment/${params.id}`)
         },
         {
           path: "readMore",

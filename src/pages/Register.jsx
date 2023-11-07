@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './register.css';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -67,6 +67,9 @@ const Register = () => {
         })
 
     }
+    useEffect(()=>{
+        document.title="rf Study | Register"
+    },[])
     return (
         <div className='register-bg-img min-h-screen'>
             <div className='pt-16 mx-5 lg:mx-0 pb-16 lg:pb-0'>

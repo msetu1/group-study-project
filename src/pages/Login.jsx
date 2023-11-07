@@ -3,7 +3,7 @@ import './login.css'
 import SocialLogin from './SocialLogin';
 import imglogo from '../../public/login.svg'
 import Swal from 'sweetalert2';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 const Login = () => {
   const {userLogin}=useContext(AuthContext)
@@ -39,6 +39,9 @@ const Login = () => {
       })
 
   }
+  useEffect(()=>{
+    document.title="rf Study | Login"
+},[])
   return (
     <div className='min-h-screen bg-img bg-black'>
       <div className='flex  items-center  pt-28 justify-between max-w-6xl mx-auto'>

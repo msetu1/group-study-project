@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -14,22 +15,26 @@ const CreateAssignments = () => {
         const image = form.image.value;
         const date = form.date.value;
         const marks = form.marks.value;
-        const groupStudy = { level,_id, description, title, date, image, marks };
-        console.log(groupStudy);
+        const created = { level,_id, description, title, date, image, marks };
+        console.log(created);
 
-        axios.post('http://localhost:5000/allasignment', groupStudy)
+        axios.post('http://localhost:5000/allasignment', created)
             .then(res => {
                 console.log(res.data);
                 if(res.data.insertedId){
                     Swal.fire({
                         title: 'Success',
-                        text: 'User Created successfully',
+                        text: 'Assignment Created successfully',
                         icon: 'success',
                         confirmButtonText: 'Ok'
                       })
                 }
             })
+            
     }
+    useEffect(()=>{
+        document.title="rf Study | Created"
+    },[])
     return (
         <div>
             <div className="bg-gray-800 max-w-5xl mx-auto mb-20 rounded-xl ">
@@ -104,7 +109,7 @@ const CreateAssignments = () => {
                             </textarea>
                         </div>
                         <div className="form-control mt-6 mb-5">
-                            <button type="submit" className="text-2xl font-semibold text-white px-16 py-3 bg-[#015196] hover:bg-black rounded-lg hover:rounded-full">Created</button>
+                            <button type="submit" className="text-2xl font-semibold text-white px-16 py-3 bg-[#015196] hover:bg-black rounded-lg hover:rounded-full">Create Assignment</button>
                         </div>
                     </form>
                 </div>

@@ -8,7 +8,7 @@ const Feature = ({ features }) => {
             </div>
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 mt-20">
                 {
-                    features.map(feture=><FeatureCard
+                    features?.map(feture=><FeatureCard
                     key={feture._id}
                     feature={feture}
                     ></FeatureCard>)
