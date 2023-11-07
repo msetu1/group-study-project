@@ -7,7 +7,7 @@ const ViewAssignment = () => {
     const { title, image, marks, level,description} = details || {};
     return (
         <div className="max-w-5xl mx-auto my-20">
-           <div className="card  bg-base-100 shadow-xl">
+           <div className="card  bg-base-100 shadow-xl mx-5 lg:mx-0">
                 <figure><img className="w-full" src={image} alt="" /></figure>
                 <div className="mx-5">
                     <div className="">
