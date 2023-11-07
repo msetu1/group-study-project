@@ -1,6 +1,6 @@
 import { Link} from "react-router-dom";
 const AllAssignmnet = ({ card,handlDeleted }) => {
-    const { title, image, marks, level, _id,date } =card;
+    const { title, image, marks, level, _id,date,description } =card;
    
     return (
         <div>
@@ -13,7 +13,8 @@ const AllAssignmnet = ({ card,handlDeleted }) => {
                 </div>
                 <div className="mx-5">
                     <div className="">
-                        <h2 className="card-title">{title}</h2>
+                        <h2 className="card-title">Title: {title}</h2>
+                        <p className="my-3">{description}</p>
                         <div className="flex items-center my-3 justify-between">
                             <p className="text-xl  font-bold mb-3">Level: <span className=" text-[#ea580c]">{level}</span></p>
                             <p className="text-xl  font-bold mb-3">Marks: <span className=" text-[#ea580c]">$ {marks}</span></p>
