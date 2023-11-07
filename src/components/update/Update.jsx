@@ -75,7 +75,7 @@ const Update = () => {
                             <input
                                 type="text"
                                 name="marks"
-                                defaultValue={marks}
+                                defaultValue={"$"+marks}
                                 className="input bg-[#ecfeff] input-bordered" required />
                         </div>
                         <div className="form-control">
