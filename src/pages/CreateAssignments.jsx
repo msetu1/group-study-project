@@ -6,7 +6,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import './create.css';
 
 const CreateAssignments = () => {
-    const {user}=useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const allAssignments = useLoaderData()
     const { _id } = allAssignments;
     const handleCreated = e => {
@@ -18,27 +18,28 @@ const CreateAssignments = () => {
         const image = form.image.value;
         const email = form.email.value;
         const date = form.date.value;
+        const name = form.name.value;
         const marks = form.marks.value;
-        const created = { level,_id,email, description, title, date, image, marks };
+        const created = { level, _id, email, description, name, title, date, image, marks };
         console.log(created);
 
-        axios.post('http://localhost:5000/allasignment', created)
+        axios.post('https://group-study-server-side.vercel.app/allasignment', created)
             .then(res => {
                 console.log(res.data);
-                if(res.data.insertedId){
+                if (res.data.insertedId) {
                     Swal.fire({
                         title: 'Success',
                         text: 'Assignment Created successfully',
                         icon: 'success',
                         confirmButtonText: 'Ok'
-                      })
+                    })
                 }
             })
-            
+
     }
-    useEffect(()=>{
-        document.title="rf Study | Created"
-    },[])
+    useEffect(() => {
+        document.title = "rf Study | Created"
+    }, [])
     return (
         <div className="create-bg-img pb-20 pt-5">
             <div className=" border max-w-5xl mx-auto  rounded-xl ">
@@ -64,7 +65,17 @@ const CreateAssignments = () => {
                                 <input
                                     type="text"
                                     name="title"
-                                    placeholder="Name"
+                                    placeholder="Title"
+                                    className="input bg-[#ecfeff] input-bordered" required />
+                            </div>
+                            <div className="form-control hidden">
+                                <label className="label">
+                                    <span className="label-text font-semibold text-xl text-black">Name</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    defaultValue={user?.displayName}
                                     className="input bg-[#ecfeff] input-bordered" required />
                             </div>
                             <div className="form-control">
@@ -100,16 +111,16 @@ const CreateAssignments = () => {
                             </div>
                         </div>
                         <div className="form-control">
-                                <label className="label">
-                                    <span className="text-black label-text font-semibold text-xl">Email</span>
-                                </label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    defaultValue={user?.email}
-                                    className="input bg-[#ecfeff] input-bordered" required />
+                            <label className="label">
+                                <span className="text-black label-text font-semibold text-xl">Email</span>
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                defaultValue={user?.email}
+                                className="input bg-[#ecfeff] input-bordered" required />
 
-                            </div>
+                        </div>
 
                         <div className="form-control">
                             <label className="label">

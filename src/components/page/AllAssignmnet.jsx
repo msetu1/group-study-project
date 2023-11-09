@@ -1,6 +1,6 @@
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -23,7 +23,7 @@ const AllAssignmnet = ({ card, setDeleteds, deleteds }) => {
                 confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`http://localhost:5000/allasignment/${id}`)
+                    axios.delete(`https://group-study-server-side.vercel.app/allasignment/${id}`)
                         .then(res => {
                             console.log(res.data);
                             if (res.data.deletedCount > 0) {
