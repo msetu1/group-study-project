@@ -1,0 +1,5 @@
+.update-bg-img{
+    background-image: url('../../public//register-bg-img.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+}

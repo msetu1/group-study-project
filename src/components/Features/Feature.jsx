@@ -6,7 +6,7 @@ const Feature = ({ features }) => {
             <div className="mt-10">
                 <h1 className="text-5xl text-center font-bold underline underline-offset-3 text-[#ea580c]">Our Feature</h1>
             </div>
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 mt-20">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">
                 {
                     features?.map(feture=><FeatureCard
                     key={feture._id}

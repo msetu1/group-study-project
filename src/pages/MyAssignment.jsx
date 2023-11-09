@@ -1,12 +1,8 @@
-import { useEffect } from "react";
 
 const MyAssignment = () => {
-    useEffect(()=>{
-        document.title="rf Study | My Assignments"
-    },[])
     return (
-        <div>
-            My assignment
+        <div className="max-w-7xl mx-auto">
+            <h1>My card</h1>
         </div>
     );
 };

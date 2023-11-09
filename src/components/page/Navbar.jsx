@@ -4,14 +4,14 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
-    const {logOut,user}=useContext(AuthContext)
-    const handleLogout=()=>{
+    const { logOut, user } = useContext(AuthContext)
+    const handleLogout = () => {
         logOut()
-        .then(()=>{})
-        .catch()
+            .then(() => { })
+            .catch()
     }
     const links = <>
-        <li><NavLink
+        <li className={`${user ? 'hidden' : "block"}`}><NavLink
             to="/"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-xl font-bold underline underline-offset-2 text-[#ea580c]" : ""
@@ -28,7 +28,7 @@ const Navbar = () => {
             Assignments
         </NavLink></li>
 
-        <li><NavLink
+        <li className={`${user ? 'block' : "hidden"}`}><NavLink
             to="/myAssignment"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-xl font-bold underline underline-offset-2 text-[#ea580c]" : ""
@@ -36,7 +36,7 @@ const Navbar = () => {
         >
             My Assignments
         </NavLink></li>
-        <li><NavLink
+        <li className={`${user ? 'block' : "hidden"}`}><NavLink
             to="/createAssignments"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-xl font-bold underline underline-offset-2 text-[#ea580c]" : ""
@@ -44,7 +44,7 @@ const Navbar = () => {
         >
             Created
         </NavLink></li>
-        <li><NavLink
+        <li className={`${user ? 'block' : "hidden"}`}><NavLink
             to="/submitted"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-xl font-bold underline underline-offset-2 text-[#ea580c]" : ""
@@ -54,13 +54,21 @@ const Navbar = () => {
         </NavLink></li>
 
 
-        <li><NavLink
+        <li className={`${user ? 'hidden' : "block"}`}><NavLink
             to="/login"
             className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-xl font-bold underline underline-offset-2 text-[#ea580c]" : ""
             }
         >
             Login
+        </NavLink></li>
+        <li className={`${user ? 'hidden' : "block"}`}><NavLink
+            to="/register"
+            className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-xl font-bold underline underline-offset-2 text-[#ea580c]" : ""
+            }
+        >
+            Register
         </NavLink></li>
 
     </>
@@ -76,12 +84,12 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                   <div className=" lg:block hidden">
-                    <div className="flex items-center gap-4">
-                    <img className="w-[80px] h-[80px]" src="https://i.ibb.co/BthKg2z/logo.jpg" alt="" />
-                    <h1 className="text-4xl font-berkshire_font font-semibold text-[#ea580c]">rf-Study Group</h1>
+                    <div className=" lg:block hidden">
+                        <div className="flex items-center gap-4">
+                            <img className="w-[80px] h-[80px]" src="https://i.ibb.co/BthKg2z/logo.jpg" alt="" />
+                            <h1 className="text-4xl font-berkshire_font font-semibold text-[#ea580c]">rf-Study Group</h1>
+                        </div>
                     </div>
-                   </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="flex items-center text-xl font-semibold text-black lg:text-white space-x-5">
@@ -90,16 +98,20 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user?.email?
-                        <>
-                        <div className="mr-5 lg:block hidden">
-                            <img className="h-[50px] w-[50px] rounded-full" src={user?.photoUrl} alt="" />
-                            <p className="text-white font-semibold text-base">{user?.displayName}</p>
-                        </div>
-                        <button onClick={handleLogout} className="text-2xl font-semibold text-white px-8 py-3 bg-[#015196] hover:bg-black rounded-lg hover:rounded-full ">Sign up</button>
-                        </>
-                        :
-                        <button className="text-2xl font-semibold text-white px-8 py-3 bg-[#015196] hover:bg-black rounded-lg hover:rounded-full ">Login</button>
+                        user?.email ?
+                            <>
+                                
+                                    <div className="mr-5 lg:block hidden">
+                                        <img className="h-[50px] w-[50px] rounded-full" src={user?.photoUrl} title={user?.displayName} alt="" />
+
+                                    </div>
+                                    <button onClick={handleLogout} className="text-2xl font-semibold text-white px-8 py-3 bg-[#015196] hover:bg-black rounded-lg hover:rounded-full ">Sign up</button>
+                                
+                            </>
+                            :
+                            <div className={`${user ? 'block' : "hidden"}`}>
+                                <button className="text-2xl font-semibold text-white px-8 py-3 bg-[#015196] hover:bg-black rounded-lg hover:rounded-full ">Login</button>
+                            </div>
                     }
                 </div>
             </div>

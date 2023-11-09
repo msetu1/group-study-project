@@ -7,10 +7,13 @@ const Footer = () => {
         <div className="bg-black py-10">
             <footer className="footer p-10 text-white max-w-7xl mx-auto">
                 <div className="">
-                    <img className="w-[80px] ml-20 h-[80px] " src="https://i.ibb.co/BthKg2z/logo.jpg" alt="" />
+                    <img className="w-[80px] md:ml-8 lg:ml-20   h-[80px] " src="https://i.ibb.co/BthKg2z/logo.jpg" alt="" />
                     <h1 className="text-4xl font-berkshire_font font-semibold text-[#ea580c] mb-3">rf-Study Group</h1>
-                    <p>A virtual study group is a group of  students <br /> who come together online to study and  <br /> learn collaboratively. It  allows students to <br /> work together on academic projects, <br /> assignments,or test  preparation without   <br />  the need to be in the same physical location</p>
-                    <p className="text-base font-semibold mt-5">----msetu5763@gmail.com-----</p>
+                    <p className='lg:block md:hidden'>A virtual study group is a group of  students <br /> who come together online to study and  <br /> learn collaboratively. It  allows students to <br /> work together on academic projects, <br /> assignments,or test  preparation without   <br />  the need to be in the same physical location</p>
+                    
+                    <div className="text-base hover:underline hover:underline-offset-1 font-semibold mt-5">
+                        <a href=""> Copyright</a>
+                    </div>
                 </div>
                 <nav className="space-y-3">
                     <header className="font-bold text-2xl">Our Services</header>

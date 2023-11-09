@@ -1,9 +1,12 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
+import './create.css';
 
 const CreateAssignments = () => {
+    const {user}=useContext(AuthContext)
     const allAssignments = useLoaderData()
     const { _id } = allAssignments;
     const handleCreated = e => {
@@ -13,9 +16,10 @@ const CreateAssignments = () => {
         const level = form.level.value;
         const description = form.description.value;
         const image = form.image.value;
+        const email = form.email.value;
         const date = form.date.value;
         const marks = form.marks.value;
-        const created = { level,_id, description, title, date, image, marks };
+        const created = { level,_id,email, description, title, date, image, marks };
         console.log(created);
 
         axios.post('http://localhost:5000/allasignment', created)
@@ -36,15 +40,15 @@ const CreateAssignments = () => {
         document.title="rf Study | Created"
     },[])
     return (
-        <div>
-            <div className="bg-gray-800 max-w-5xl mx-auto mb-20 rounded-xl ">
-                <div className="mt-20 ">
-                    <h1 className="text-center text-5xl font-bold text-white pt-12">Create Assignments</h1>
+        <div className="create-bg-img pb-20 pt-5">
+            <div className=" border max-w-5xl mx-auto  rounded-xl ">
+                <div className="">
+                    <h1 className="text-center text-black text-5xl font-bold  pt-5">Create Assignments</h1>
                 </div>
                 <div className=" ">
                     <form onSubmit={handleCreated} className="card-body">
                         <div className="text-end">
-                            <label className="label-text font-semibold text-xl underline underline-offset-2 text-white">Choice your level : </label>
+                            <label className="label-text font-semibold text-xl underline underline-offset-2 text-black">Choice your level : </label>
                             <select className="border bg-[#ecfeff] ml-4 px-3 rounded-lg py-2" id="cars" name="level">
                                 <option value="Easy">Easy</option>
                                 <option value="Medium">Medium</option>
@@ -55,7 +59,7 @@ const CreateAssignments = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-semibold text-xl text-white">Title</span>
+                                    <span className="label-text font-semibold text-xl text-black">Title</span>
                                 </label>
                                 <input
                                     type="text"
@@ -65,7 +69,7 @@ const CreateAssignments = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="text-white text-whitelabel-text font-semibold text-xl">Date</span>
+                                    <span className="text-black text-whitelabel-text font-semibold text-xl">Date</span>
                                 </label>
                                 <input
                                     type="date"
@@ -75,7 +79,7 @@ const CreateAssignments = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className=" text-whitelabel-text font-semibold text-xl text-white">Marks</span>
+                                    <span className=" text-whitelabel-text font-semibold text-xl text-black">Marks</span>
                                 </label>
                                 <input
                                     type="text"
@@ -85,7 +89,7 @@ const CreateAssignments = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="text-white label-text font-semibold text-xl">Image Url</span>
+                                    <span className="text-black label-text font-semibold text-xl">Image Url</span>
                                 </label>
                                 <input
                                     type="text"
@@ -95,20 +99,31 @@ const CreateAssignments = () => {
 
                             </div>
                         </div>
+                        <div className="form-control">
+                                <label className="label">
+                                    <span className="text-black label-text font-semibold text-xl">Email</span>
+                                </label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    defaultValue={user?.email}
+                                    className="input bg-[#ecfeff] input-bordered" required />
+
+                            </div>
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="text-white label-text font-semibold text-xl">Description</span>
+                                <span className="text-black label-text font-semibold text-xl">Description</span>
                             </label>
                             <textarea
                                 name="description"
                                 placeholder="Your description"
                                 className="p-8 rounded bg-[#ecfeff]"
                                 id="" cols="30"
-                                rows="5">
+                                rows="3">
                             </textarea>
                         </div>
-                        <div className="form-control mt-6 mb-5">
+                        <div className="form-control mt-6 ">
                             <button type="submit" className="text-2xl font-semibold text-white px-16 py-3 bg-[#015196] hover:bg-black rounded-lg hover:rounded-full">Create Assignment</button>
                         </div>
                     </form>

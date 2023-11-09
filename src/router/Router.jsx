@@ -11,11 +11,13 @@ import Submited from "../pages/Submited";
 import PrivateProvider from "../providers/PrivateProvider";
 import ViewAssignment from "../components/details/ViewAssignment";
 import Update from "../components/update/Update";
+import ErrorPage from "../components/page/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path: "/",
@@ -26,6 +28,7 @@ const router = createBrowserRouter([
             path: "assignments",
             element: <Assignments></Assignments>,
             loader:()=>fetch('http://localhost:5000/allasignment')
+           
         },
         
         {
@@ -33,6 +36,7 @@ const router = createBrowserRouter([
             element: <PrivateProvider>
               <MyAssignment></MyAssignment>
             </PrivateProvider>, 
+            loader:()=>fetch('http://localhost:5000/allasignment')
         },
         {
             path: "view/:id",

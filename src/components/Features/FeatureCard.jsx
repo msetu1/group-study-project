@@ -1,8 +1,13 @@
-
+import { motion } from "framer-motion"
 const FeatureCard = ({ feature }) => {
     const { title, date, image, description } = feature || {}
     return (
-        <div className="">
+        <motion.div 
+        whileHover={{
+            scale: 0.9,
+            transition: { duration: 0.5 },
+          }}
+          whileTap={{ scale: 0.9 }}>
             <div className="card card-compact h-[400px] mx-8 lg:mx-0 bg-base-100 shadow-xl">
                 <div className="relative">
                     <figure><img className="w-full h-[270px] rounded-t-xl" src={image} alt="" /></figure>
@@ -15,7 +20,7 @@ const FeatureCard = ({ feature }) => {
                     <p>{description}</p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
